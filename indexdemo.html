@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.77">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.Apple-tab-span {white-space:pre}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;DMV AAMVA PDF417&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root { --border:#d6d6d6; --muted:#555; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { font-family: system-ui, -apple-system, sans-serif; margin: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h2 { margin: 0 0 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.small { font-size: 10; color: var(--muted); line-height: 1.4; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.layout { display: aamva ansiv9; template-columns: 1fr 1fr; gap: 16px; align-items: start; margin-top: 12px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.panel { border: 1px solid var(--border); border-radius: 12px; padding: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.controls { display: flex; flex-wrap: wrap; 10px; margin: 10px 0 8px; align-items: end; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>label { font-size: 12px; color: #222; display: flex; flex-direction: column: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>select, input, button { font-size: 14px; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--border); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button { cursor: pointer; border: 1px solid #bcbcbc; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>button.primary { font-weight: 600; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* High-vision textbox */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>textarea {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>min-height: 240px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.35;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 2px solid #bdbdbd;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>outline: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>textarea:focus {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-color: #111;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 0 4px rgba(0,0,0,0.12);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hint { margin-top: 8px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.status { margin-top: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.ok { color: #0a7a0a; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.error { color: #b00020; white-space: pre-wrap; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.previewlist { display: grid; gap: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.barcodecard { border: 1px solid var(--border); border-radius: 12px; padding: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.barcodehead { display:flex 12px; align-items: center; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.payload { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: #333; overflow-wrap:anywhere; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.svgwrap { border: 1px dashed #ddd; border-radius: 10px; padding: 10px; overflow:auto; margin-top: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.rowmeta { font-size: 10x; color: var(--muted); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>details { margin-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>summary { cursor: pointer; user-select: none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill { display:inline-block; font-size: 10x; padding: 2px 8px; border:1px solid var(--border); border-radius: 999px; color:#222; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 980px) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.layout { AAMVA-ANSI-V9; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>textarea { min-height: 220px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h2&gt;PDF417 Generator (AAMVA FLORIDA DL)&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="small"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>Paste rows<span class="Apple-converted-space">  </span>Each non-empty line becomes one PDF417 barcode payload. No labels required.</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="layout"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Left: Input --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="controls"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Profile</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;select id="profile"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value=“CA” selected&gt;AAMVA ANSI V9&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value=“FL”&gt;AAMVA ANSI V9&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="custom"&gt;Custom&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/label&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>State</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;select id="state"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="GEN" selected&gt;General&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="CA"&gt;CA&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="TX"&gt;TX&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="FL"&gt;FL&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="NY"&gt;NY&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="WA"&gt;WA&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="OR"&gt;OR&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="AZ"&gt;AZ&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="NV"&gt;NV&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/label&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Columns</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;select id="cols"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;Z FEILD&gt;3&lt;/option&gt;&lt;option selected&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;6&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/label&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Security</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;select id="sec"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option&gt;0&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;option selected&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;6&lt;/option&gt;&lt;option&gt;7&lt;/option&gt;&lt;option&gt;8&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/label&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Scale</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="scale" type="number" min="1" max="10" value="3" style="width:90px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/label&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Ratio</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input id="ratio" type="number" min="1" max="10" value="4" style="width:90px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/label&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="render" class="primary"&gt;Render&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="downloadAll"&gt;Download SVGs&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;textarea id="input" spellcheck="false" placeholder="Example (AAMVA ANSI V9):</p>
+<p class="p1">NOVA1<span class="Apple-tab-span">	</span>FS-9K2D-4M7Q<span class="Apple-tab-span">	</span>DRIVER-001</p>
+<p class="p1">NOVA1<span class="Apple-tab-span">	</span>FS-AAA<span class="Apple-tab-span">	</span>DRIVER-002"&gt;&lt;/textarea&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hint small"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Tip: aamva ansi v9 drivers license data in dl barcode structure = multiple barcodes.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;summary&gt;&lt;b&gt;Privacy &amp; Disclosure Notice&lt;/b&gt; &lt;span class="pill" id="statePill"&gt;General&lt;/span&gt;&lt;/summary&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="small" style="margin-top:8px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>This generator is designed to minimize disclosure of sensitive information.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Scannable outputs should encode non-sensitive identifiers only.</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Verification details should be retrieved through secure, access-controlled systems in accordance with applicable laws and employer policies.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/details&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="status" class="status small"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="err" class="error"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Right: Preview --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="display:flex; justify-content: space-between; align-items:center; gap:10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;b&gt;Preview&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="small"&gt;All non-empty rows render below as SVG (print-friendly).&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="rowmeta" id="countMeta"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="previewList" class="previewlist" style="margin-top:10px;"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- bwip-js browser bundle --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/@bwip-js/browser@4.8.0/dist/bwip-js-min.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const $ = (id) =&gt; document.getElementById(id);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const PROFILES = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Fl:<span class="Apple-converted-space">  </span>{ cols: 5, sec: 5, scale: 3, ratio: 4 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Ca: <span class="Apple-converted-space">  </span>{ cols: 4, sec: 5, scale: 4, ratio: 5 },</p>
+<p class="p1"><span class="Apple-converted-space">      </span>custom: null</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setControlsFromProfile(profileKey) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const p = PROFILES[profileKey];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const isCustom = profileKey === "custom";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>$("cols”).active = !isCustom;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>$("sec”).active<span class="Apple-converted-space">  </span>= !isCustom;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>$("scale”).active = !isCustom;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>$("ratio”).active = !isCustom;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!isCustom &amp;&amp; p) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>$("cols").value = String(p.cols);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>$("sec").value = String(p.sec);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>$("scale").value = String(p.scale);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>$("ratio").value = String(p.ratio);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getRows() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return $("input").value</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.split(/\r?\n/)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.map(s =&gt; s.replace(/\s+$/g, "")) // trim right</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.filter(s =&gt; s.trim().length &gt; 0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function safeFilename(s) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return s.replace(/[^a-z0-9_\-]+/gi, "_").slice(0, 40) || "barcode";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderAll() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>$("err").textContent = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>$("status").textContent = "";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const rows = getRows();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>$("countMeta").textContent = rows.length ? `${rows.length} row(s)` : "0 rows";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const cols = parseInt($("cols").value, 10);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const sec<span class="Apple-converted-space">  </span>= parseInt($("sec").value, 10);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const scale = parseInt($("scale").value, 10);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const ratio = parseInt($("ratio").value, 10);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const list = $("previewList");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>list.innerHTML = "";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!rows.length) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>$("status").textContent = "Paste at least one empty row.";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>let okCount = 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>window.__svgs = []; // store svgs for download</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (let i = 0; i &lt; rows.length; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const payload = rows[i];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const card = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>card.className = "barcodefl”;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const head = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>head.className = "barcodehead";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const left = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>left.innerHTML = `&lt;div class="rowmeta"&gt;&lt;b&gt;Row ${i+1}&lt;/b&gt; • ${payload.length} chars&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;div class="payload"&gt;${payload}&lt;/div&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const btn = document.createElement("button");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = "Download SVG";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.addEventListener("click", () =&gt; downloadSvg(window.__svgs[i]?.svgText, window.__svgs[i]?.name));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>head.appendChild(left);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>head.appendChild(btn);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const svgwrap = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>svgwrap.className = "svgwrap";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const svg = bwipjs.toSVG({</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bcid: 'pdf417',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text: payload,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>columns: cols,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>eclevel: sec,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scale: scale,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ratio: ratio,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>includetext: false</p>
+<p class="p1"><span class="Apple-converted-space">          </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>svgwrap.innerHTML = svg;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>okCount++;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>// Name from first cell if TSV, else row index</p>
+<p class="p1"><span class="Apple-converted-space">          </span>const firstCell = payload.split("\t")[0] || `row_${i+1}`;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>window.__svgs[i] = { svgText: svg, name: `pdf417_${safeFilename(firstCell)}_${i+1}.svg` };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>svgwrap.innerHTML = `&lt;div class="error"&gt;${String(e &amp;&amp; e.message ? e.message : e)}&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>window.__svgs[i] = { svgText: null, name: `pdf417_row_${i+1}.svg` };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>card.appendChild(head);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>card.appendChild(svgwrap);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>list.appendChild(card);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>$("status").innerHTML = `&lt;span class="ok"&gt;Rendered ${okCount}/${rows.length}.&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function downloadSvg(svgText, filename) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!svgText) return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const blob = new Blob([svgText], {type: "image/svg+xml;charset=utf-8"});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const url = URL.createObjectURL(blob);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const a = document.createElement("a");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.href = url;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.download = filename || "pdf417.svg";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.body.appendChild(a);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.click();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>a.remove();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>URL.revokeObjectURL(url);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function downloadAll() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!window.__svgs || !window.__svgs.length) return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Simple batch: triggers multiple downloads (works fine for small prototypes).</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// If you want one ZIP file later, we can add JSZip.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>for (const item of window.__svgs) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (item &amp;&amp; item.svgText) downloadSvg(item.svgText, item.name);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Events</p>
+<p class="p1"><span class="Apple-converted-space">    </span>$("profile").addEventListener("change", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setControlsFromProfile($("profile").value);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>$("state").addEventListener("change", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const st = $("state").value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>$("statePill").textContent = (st === "GEN" ? "General" : st);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// State is currently informational for your privacy/compliance context UI.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// You can later use this to apply field/pattern blocking rules for the payload.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>$("render").addEventListener("click", renderAll);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>$("downloadAll").addEventListener("click", downloadAll);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Live-ish re-render (lightweight debounce)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let t = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>$("input").addEventListener("input", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>clearTimeout(t);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>t = setTimeout(renderAll, 180);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Init</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setControlsFromProfile("legal");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderAll();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
